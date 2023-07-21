@@ -6,7 +6,7 @@ Upload your static files to laf oss.
 steps:
   - uses: actions/checkout@master
   - name: Laf OSS Upload
-    uses: 0fatal/laf-oss-upload@1.0.0
+    uses: 0fatal/laf-oss-upload@main
     with:
       endpoint: "https://oss.laf.run"
       region: "cn-hz"
