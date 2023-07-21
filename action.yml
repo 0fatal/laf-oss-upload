@@ -1,0 +1,40 @@
+# action.yml
+name: "Laf OSS Upload"
+description: "Laf OSS Upload"
+branding:
+  icon: 'upload'
+  color: 'green'
+inputs:
+  endpoint:
+    description: "Endpoint"
+    required: true
+  region:
+    description: "Region"
+    required: true
+  bucket:
+    description: "Bucket Name"
+    required: true
+  remote-dir:
+    description: "Bucket directory will be uploaded to"
+    required: false
+    default: ""
+  clear-before-upload:
+    description: "Clear target OSS dir before upload"
+    required: false
+    default: true
+  access-key-id:
+    description: "Access Key ID"
+    required: true
+  access-key-secret:
+    description: "Access Key Secret"
+    required: true
+  sts-token:
+    description: "Session Token"
+    required: false
+  target-dir:
+    description: "Target directory which need to be uploaded"
+    required: false,
+    default: "."
+runs:
+  using: "node18"
+  main: "index.js"

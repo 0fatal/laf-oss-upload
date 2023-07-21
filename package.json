@@ -1,0 +1,21 @@
+{
+  "name": "laf-oss-upload",
+  "version": "1.0.0",
+  "description": "Upload your static files to laf oss.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0fatal/laf-oss-upload.git"
+  },
+  "keywords": [],
+  "author": "0fatal",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@aws-sdk/client-s3": "^3.373.0",
+    "mime": "^3.0.0"
+  }
+}
