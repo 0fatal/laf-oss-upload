@@ -15,7 +15,7 @@ steps:
       bucket: "your_bucket"
       target-dir: "dist"
       remote-dir: ""
-      clear_before_upload: true
+      clear-before-upload: true
 ```
 
 ## More
