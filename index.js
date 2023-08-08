@@ -52,7 +52,7 @@ async function main() {
   });
 
   if (CLEAR_BEFORE_UPLOAD && bucketObjects.length > 0) {
-    await s3Client.deleteS3Objects(bucketObjects);
+    await s3Client.deleteS3Objects(BUCKET_PREFIX);
     bucketObjects.length = 0;
   }
 

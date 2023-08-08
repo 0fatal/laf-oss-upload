@@ -11,12 +11,31 @@ class S3Client {
     this.bucket = bucket;
   }
 
-  async deleteS3Objects(objects) {
-    const deleteParams = {
-      Bucket: this.bucket,
-      Delete: { Objects: objects },
-    };
-    return await this.s3.deleteObjects(deleteParams).then((res) => res.Deleted);
+  async deleteS3Objects(key) {
+    const { Versions } = await this.s3
+      .listObjectVersions({
+        Bucket: this.bucket,
+        Prefix: key,
+      })
+    
+    const res = await this.s3
+      .deleteObjects({
+        Bucket: this.bucket,
+        Delete: {
+          Objects: Versions.map(
+            ({ Key, VersionId }) => ({
+              Key,
+              VersionId,
+            })
+          ),
+          Quiet: true,
+        },
+      })
+ 
+    if (res?.Errors?.length === 0 && Versions.length >= 1000) {
+      await this.deleteS3Objects(key);
+    }
+    return res
   }
 
   async listObjects(params) {
